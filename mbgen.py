@@ -42,6 +42,10 @@ var_dispatcher\
 file_dispatcher = FileDispatcher(var_dispatcher)
 
 for modname in args.modules.split(','):
+    # skip non-existent modules
+    if not os.path.exists("./assets/%s/api.py" % modname):
+        continue
+
     ext = import_module("assets.%s.api" % modname)
     files = []
     walk("./assets/%s/root/" % modname, files)
