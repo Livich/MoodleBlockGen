@@ -30,6 +30,9 @@ class VarDispatcher:
                 for line in file:
                     print(self.exec_str(line), end='')
 
+    def __str__(self):
+        return str(self.__variables)
+
 
 class FileDispatcher:
     __files = []
@@ -62,7 +65,9 @@ class FileDispatcher:
             dest = os.path.normpath(os.path.join(dist, relpath))
             os.makedirs(os.path.split(dest)[0], exist_ok=True)
             copyfile(fn, self.__var_dispatcher.exec_str(dest))
-            # print("%s -> %s" % (path, os.path.normpath(os.path.join(dist, relpath))))
+
+    def __str__(self):
+        return str(self.__files)
 
 
 class StrFormat:

@@ -1,4 +1,3 @@
-import os
 from utilities import StrFormat
 
 class Api:

@@ -16,6 +16,7 @@ destination_path = os.path.abspath(os.path.join(args.destination, args.block_nam
 if os.path.exists(destination_path):
     raise Exception("Destination path already exists")
 
+
 def verbose(message):
     if args.verbose:
         print(message)
@@ -46,6 +47,9 @@ for modname in args.modules.split(','):
     walk("./assets/%s/root/" % modname, files)
     file_dispatcher.add(files)
     o_api = ext.Api(file_dispatcher, var_dispatcher)
+
+verbose("Variable list: %s" % str(var_dispatcher))
+verbose("File list: %s" % str(file_dispatcher))
 
 os.makedirs(destination_path)
 file_dispatcher.cp(destination_path)
