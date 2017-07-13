@@ -7,4 +7,4 @@ class Api:
         self.__vd = vd
         self.__fd = fd
 
-        self.__vd.set('SKELETON_PREAMBLE', "")
+        self.__vd.set("SKELETON_PREAMBLE", "")

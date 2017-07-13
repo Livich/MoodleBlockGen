@@ -21,14 +21,14 @@ class VarDispatcher:
 
     def exec_str(self, s):
         for k, v in self.__variables.items():
-            s = s.replace('%'+str(k)+'%', str(v))
+            s = s.replace("%"+str(k)+"%", str(v))
         return s
 
     def exec(self, files):
         for filename in files:
             with fileinput.FileInput(filename, inplace=True) as file:
                 for line in file:
-                    print(self.exec_str(line), end='')
+                    print(self.exec_str(line), end="")
 
     def __str__(self):
         return str(self.__variables)
@@ -56,11 +56,11 @@ class FileDispatcher:
         for fn in self.__files:
             fn = os.path.normpath(fn)
             path = fn.split(os.sep)
-            relpath = ''
+            relpath = ""
             for elm in path[::-1]:
-                if elm != 'root':
+                if elm != "root":
                     relpath = os.path.join(elm, relpath)
-                if elm == 'root':
+                else:
                     break
             dest = os.path.normpath(os.path.join(dist, relpath))
             os.makedirs(os.path.split(dest)[0], exist_ok=True)
@@ -73,5 +73,5 @@ class FileDispatcher:
 class StrFormat:
     @staticmethod
     def camel_case(s):
-        words = [word.capitalize() for word in s.split('_')]
+        words = [word.capitalize() for word in s.split("_")]
         return "".join(words)
